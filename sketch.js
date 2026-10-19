@@ -42,7 +42,7 @@ function draw() {
   
   // => 2.0. IMPOSTAZIONI DELLO SPAZIO
     let centroX = windowWidth / 2; // definisco che il mio centro di larghezza è al centro della finestra web 
-    let centroY = (windowHeight / 2) - 50; // definisco che il mio centro d'altezza è al centro della finestra web 
+    let centroY = (windowHeight / 2) - 50; // definisco che il mio centro d'altezza è leggermente più in alto per lasciare spazio al testo
     let numeroAnelli = 3;  // definisco che la disposizione concentrica è suddivisa in 3 anelli
     
   // => 2.1. DISPOSIZIONE NELLO SPAZIO
@@ -104,14 +104,14 @@ function disegnaGlifo (posx, posy, dim, palette) {
   // => 3.0. DISEGNO FORME DI BASE
     // 1. Cerchi
       push();
-      scale(random(0.8, 1.2));
+      scale(random(0.8, 1.2)); // trasformazione di scala entro due parametri
       noStroke();
       fill(random(palette));
       circle(-dim * 0.2, -dim * 0.15, dim * 0.8); 
       pop();
 
       push ();
-      scale(random(0.8, 1.2));
+      scale(random(0.8, 1.2)); // trasformazione di scala entro due parametri
       noFill ();
       stroke(random(palette));
       circle (0, 0, dim ); 
@@ -120,15 +120,15 @@ function disegnaGlifo (posx, posy, dim, palette) {
 
     // 2. Rettangolo
       push();
-      rotate(random(0,360));
+      rotate(random(0,360)); // trasformazione di rotazione totale
       fill(random(palette));
       rect(dim * 0.1, dim * 0.15, dim * 0.6, dim * 0.6);
       pop();
 
     // 3. Linee e Archi 
       push();
-      scale(random(0.8,1.5));
-      rotate(random(0,360));
+      scale(random(0.8,1.5)); // trasformazione di scala entro due parametri
+      rotate(random(0,360)); // trasformazione di rotazione totale
       stroke(random(palette));
       strokeWeight(1);
       line(-dim * 0.5, -dim * 0.5, dim * 0.5, dim * 0.5);
@@ -155,7 +155,7 @@ function disegnaGlifo (posx, posy, dim, palette) {
       let spostamentoy = random(-dim * 0.5, dim * 0.5);
     
       push();
-      rotate(random(0,360));
+      rotate(random(0,360)); // trasformazione di rotazione totale
       fill(random(palette));
       noStroke();
       circle(dim + spostamentox, -dim * 0.3 + spostamentoy, dim * 0.15);
