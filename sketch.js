@@ -42,14 +42,14 @@ function draw() {
   
   // => 2.0. IMPOSTAZIONI DELLO SPAZIO
     let centroX = windowWidth / 2; // definisco che il mio centro di larghezza è al centro della finestra web 
-    let centroY = windowHeight / 2; // definisco che il mio centro d'altezza è al centro della finestra web 
+    let centroY = (windowHeight / 2) - 50; // definisco che il mio centro d'altezza è al centro della finestra web 
     let numeroAnelli = 3;  // definisco che la disposizione concentrica è suddivisa in 3 anelli
     
   // => 2.1. DISPOSIZIONE NELLO SPAZIO
     // Creazione degli anelli:
     // creo un ciclo "for" => La variabile a=anello corrente. Quindi iniziamo ad anello 1 fino ad arrivare ad anello 3 compreso.
       for (let a = 1; a <= numeroAnelli; a++) { // a = anello
-      let dimensioneGlifo = 10 + (a * 10);  // Crescita equilibrata del glifo (per ogni anello la dimensione aumenta)
+      let dimensioneGlifo = 10 + (a * 8);  // Crescita equilibrata del glifo (per ogni anello la dimensione aumenta)
 
     // Definiamo la spaziatura:
       let spaziaturaAnelli = 60; // tra gli anelli creo una spaziatura
@@ -70,10 +70,24 @@ function draw() {
       // 1. Glifo principale (al centro della finestraweb)
         disegnaGlifo(0, 0, dimensioneGlifo, palette);
       // 2. Glifo secondario (sfalsato per creare tipo effetto satellite) Ha molta distanza dal centro e dimensione dimezzata
-        disegnaGlifo(3*spaziaturaAnelli, 3*spaziaturaAnelli, dimensioneGlifo/2, palette);
+        disegnaGlifo(2.2 * spaziaturaAnelli, 2.2 * spaziaturaAnelli, dimensioneGlifo/2, palette);
       pop();
     }
   }
+
+  // => 2.4 TESTO
+  push ();
+  fill (245, 197, 24);
+  noStroke ();
+  textAlign(CENTER);
+  textSize (14);
+  textStyle (ITALIC)
+  text("“L'arte oltrepassa i limiti nei quali il tempo vorrebbe comprimerla, e indica il contenuto del futuro.”", centroX, windowHeight - 80);
+
+  textSize(14);
+  textStyle(BOLD);
+  text("— Wassily Kandinsky", centroX, windowHeight - 60);
+  pop();
 }
 
 // 3. CREAZIONE DEL DISEGNO DI BASE
@@ -106,7 +120,7 @@ function disegnaGlifo (posx, posy, dim, palette) {
 
     // 2. Rettangolo
       push();
-      rotate(random(20, 180));
+      rotate(random(0,360));
       fill(random(palette));
       rect(dim * 0.1, dim * 0.15, dim * 0.6, dim * 0.6);
       pop();
@@ -114,6 +128,7 @@ function disegnaGlifo (posx, posy, dim, palette) {
     // 3. Linee e Archi 
       push();
       scale(random(0.8,1.5));
+      rotate(random(0,360));
       stroke(random(palette));
       strokeWeight(1);
       line(-dim * 0.5, -dim * 0.5, dim * 0.5, dim * 0.5);
@@ -140,7 +155,7 @@ function disegnaGlifo (posx, posy, dim, palette) {
       let spostamentoy = random(-dim * 0.5, dim * 0.5);
     
       push();
-      rotate(random(20, 180));
+      rotate(random(0,360));
       fill(random(palette));
       noStroke();
       circle(dim + spostamentox, -dim * 0.3 + spostamentoy, dim * 0.15);
